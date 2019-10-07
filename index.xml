@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Visual Analytics 2019-2 / HW3</title>
+</head>
+<body>
+
+	<h1>Cúal es su estado civil? averigue si pertenece al grupo poblacional que registró el mayor número de homicidios durante el 2018</h1>
+	
+
+		<div class='tableauPlaceholder' id='viz1570416254227' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ho&#47;Homicidios2018_15704155174990&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Homicidios2018_15704155174990&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ho&#47;Homicidios2018_15704155174990&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1570416254227');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='1027px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='1027px';} else { vizElement.style.width='100%';vizElement.style.height='827px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+	</div>
+
+	<div><br><b>Insight:</b> Los solteros son el grupo poblacional con más numero de homicidios durante el 2018. 
+		<ul>
+        <li>Los homicidios se concentran en las zonas urbanas y con mayor número de casos entre el sábado y lunes.
+		<li>La edad promedio de los homicidios de solteros ocurridos durante el 2018 es de 29 años.
+		<li>Los estados civil: viudo, divorciado y separado, no representan un numero de homicidios significativo durante el 2018.
+		<ul>
+	</div>
+
+	<div>
+
+	<p> 
+		<b>Visualización:</b> Homicidios según estado civil para el año 2018? debería  preocuparse?
+		<p class="card-text">Estos son datos que publicó la Dijin-Policia Nacional, correspondientes a los homicidios (del 01 de enero al 30 de noviembre año 2018). Cifras sujetas a variación, en proceso de integración y consolidación con información de fiscalía general de la nación. Permite identificar información demográfica y del homicidio, en algunos casos la información recopilada no está completa por falta de datos en el momento del reporte.</p>
+
+		<b>Objetivo:</b> Aplicar el WHAT, WHY and HOW para crear una visualización multidimensional, enfocada al análisis propuesto en el libro Visual Analysis and Design de Tamara. <br><br>
+
+		<b>Datos Originales:</b> https://www.datos.gov.co/Seguridad-y-Defensa/Homicidios-2018/pim7-ersh<br><br>
+
+		<b>Fuente:</b> Datos Abiertos Colombia (https://www.datos.gov.co/) - 2019/09/17<br><br>
+
+		<b>Github: https://raw.githubusercontent.com/marcelagonzalezv/VA/master/Homicidios_2018.csv</b><br><br>
+
+	</p>
+	
+	<p>
+		<b>Análisis del WHAT:</b><br>
+		Dataset type: Tables <br>
+
+		Dataset availability: Static <br>
+
+		<style>
+		table {
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+
+		td, th {
+		  border: 1px solid #dddddd;
+		  text-align: left;
+		  padding: 8px;
+		}
+
+		tr:nth-child(even) {
+		  background-color: #dddddd;
+		}
+		</style>
+		Attribute Types:<br>
+
+		<table>
+		  <tr>
+			<th>Data Name</th>
+			<th>Data Type</th>
+			<th>Example</th>
+		  </tr>
+		  <tr>
+			<td>Estado Civil</td>
+			<td>Categorical</td>
+			<td>SOLTERO, CASADO, ...</td>
+		  </tr>
+		  <tr>
+			<td>Sexo</td>
+			<td>Categorical</td>
+			<td>FEMENINO, MASCULINO</td>
+		  </tr>
+		  <tr>
+			<td>Edad</td>
+			<td>Ordered - Quantitative</td>
+			<td>39 (máximo 93, mínimo 0)</td>
+		  </tr>
+		  <tr>
+			<td>Cantidad Homicidios</td>
+			<td>Ordered - Quantitative</td>
+			<td>1,2</td>
+		  </tr>
+		  
+
+
+		</table>
+	</p>
+	
+	<p>
+		<b>Análisis del WHY:</b><br><br>
+
+		<b>Main Task:</b>
+		Identificar el estado civil con mayor numero de homicidios durante el 2018 (Analyze [present] -> features)<br><br>
+
+		<b>Sub Task:</b><br>
+		1. Comparar el numero de homicidios durante el 2018 por estado civil. (Compare [present] -> features)<br><br>
+		2. Conocer la edad  promedio de las personas por estado civil. (Analyze [derive] -> features)<br><br>
+		
+	</p>
+	
+	<p>
+		<b>Análisis del HOW:</b><br><br>
+
+		Encode -> Aggregate -> Order -> Aling<br>
+
+		Map -> Categorical -> Color -> hue<br>
+
+		Manipulate-> Change,Select<br>
+
+		Canal: Línea (histograma)<br>
+        	   HeatMap<br><br>
+	</p>
+	
+	<p>
+		<b>MIT License</b><br>
+
+		Copyright (c) 2018 Lina Marcela González Vargas 
+
+		Permission is hereby granted, free of charge, to any person obtaining a copy
+		of this software and associated documentation files (the "Software"), to deal
+		in the Software without restriction, including without limitation the rights
+		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+		copies of the Software, and to permit persons to whom the Software is
+		furnished to do so, subject to the following conditions:
+
+		The above copyright notice and this permission notice shall be included in all
+		copies or substantial portions of the Software.
+
+		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+		SOFTWARE.
+	</p>
+
+
+</body>
+</html>
